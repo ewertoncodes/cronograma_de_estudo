@@ -1,12 +1,12 @@
-# before_install:
-#   - sudo apt-get -qq update
-#   - sudo apt-get install -y libxml2-dev
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y libxml2-dev
 
 language: ruby
 rvm:
  #- 2.2
  - 2.4.0p0
- - jruby
+ # - jruby
  # - rbx-2
 # uncomment and edit the following line if your project needs to run something other than `rake`:
 # script: bundle exec rspec spec
