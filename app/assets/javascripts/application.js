@@ -14,4 +14,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery-te-1.4.0.min
 //= require_tree .
+
+$(".formatting").jqte();
