@@ -23,7 +23,8 @@ development:
 test: &test
  <<: *default
  host: localhost
- database: cronograma_de_estudo_test
+ # database: cronograma_de_estudo_test
+ database: travis_ci_test
 
 #production:
 #  <<: *default
