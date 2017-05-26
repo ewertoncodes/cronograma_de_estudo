@@ -13,6 +13,10 @@
 //= require bootstrap.min
 //= require jquery
 //= require jquery_ujs
+//= require froala_editor.min
 //= require turbolinks
 //= require_tree .
 
+$(document).ready(function(){
+	$('.formatting').froalaEditor();
+});
