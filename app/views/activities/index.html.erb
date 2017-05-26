@@ -3,17 +3,19 @@
 <table class="table table-striped">
 <thead>
 	<tr>
+		<th>Ordem</th>
 		<th>Nome</th>
 		<th>Descrição</th>
-		<th>Período</th>
+		<th style="text-align: center;">Período</th>
 	</tr>
 </thead>
 <tbody>
-	<% @activities.each do |activity| %>
+	<% @activities.each_with_index do |activity, i| %>
 		<tr>
-			<td><%= link_to activity.name, activity_path(activity.id) %></td>
-			<td><%= activity.description %></td>
-			<td><%= activity.period %></td>
+			<td style="width: 5%; text-align: center;"><%= i + 1 %></td>
+			<td style="width: 20%;"><%= link_to activity.name, activity_path(activity.id) %></td>
+			<td style="width: 55%;"><%= raw activity.description %></td>
+			<td style="text-align: center;"><%= activity.period %></td>
 		</tr>
 	<% end %>
 </tbody>

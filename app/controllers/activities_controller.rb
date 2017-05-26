@@ -1,15 +1,16 @@
 class ActivitiesController < ApplicationController
   def new
-    
+    @activity = Activity.new
   end
   
   def create
     @activity = Activity.new(activity_params)
      
-    @activity.save
-    redirect_to @activity
-    
-#    render plain: params[:activity].inspect
+    if @activity.save
+      redirect_to @activity
+    else
+      render "new"
+    end
   end
   
   def show
@@ -17,11 +18,11 @@ class ActivitiesController < ApplicationController
   end
   
   def index
-    @activities = Activity.all
+    @activities = Activity.all.order(:created_at)
   end
   
   private
-  def activity_params
-    params.require(:activity).permit(:name, :description)
-  end
+    def activity_params
+      params.require(:activity).permit(:name, :description, :period)
+    end
 end

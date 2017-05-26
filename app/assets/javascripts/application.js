@@ -18,5 +18,7 @@
 //= require_tree .
 
 $(document).ready(function(){
-	$('.formatting').froalaEditor();
+	$('.formatting').froalaEditor({
+		
+	});
 });
