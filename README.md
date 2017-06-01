@@ -9,11 +9,11 @@
 
 ## Testes:
 
-**Específico para um arquivo (RSpec):** bundle exec rspec spec/models/activity_spec.rb
+**Específico para um arquivo (RSpec):** `bundle exec rspec spec/models/activity_spec.rb`
 
-**Todos:** rake
+**Todos:** `rake`
 
-**RSpec:** rspec
+**RSpec:** `rspec`
 
-**Cucumber:** rake cucumber
+**Cucumber:** `rake cucumber`
 
