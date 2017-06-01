@@ -18,7 +18,7 @@ class ActivitiesController < ApplicationController
   end
   
   def index
-    @activities = Activity.all.order(:created_at)
+    @activities = Activity.all_for_created_at_desc
   end
   
   private

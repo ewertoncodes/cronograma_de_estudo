@@ -5,3 +5,7 @@ end
 When(/^I go to the activity create$/) do
   visit new_activity_path
 end
+
+When(/^I go to the activity index$/) do
+  visit activities_path
+end
