@@ -9,7 +9,10 @@
 * Testes:
 
 **Específico para um arquivo (RSpec):** bundle exec rspec spec/models/activity_spec.rb
+
 **Todos:** rake
+
 **RSpec:** rspec
+
 **Cucumber:** rake cucumber
 
