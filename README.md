@@ -6,6 +6,7 @@
 3. postgres: **9.6**
 
 
+
 ## Testes:
 
 **Específico para um arquivo (RSpec):** bundle exec rspec spec/models/activity_spec.rb
