@@ -17,6 +17,7 @@
 // require_tree .
 //= require bootstrap.min
 
+
 $(document).ready(function(){
 	$('.formatting').froalaEditor({
 		
