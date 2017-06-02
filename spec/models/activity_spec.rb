@@ -17,7 +17,6 @@ RSpec.describe Activity do
 		end
 	end
 
-
 	describe '#list activity' do
 		it "for priority asc" do
 			activity1 = Activity.create(name: 'oi1', priority: 2)
