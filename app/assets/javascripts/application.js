@@ -10,12 +10,12 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require bootstrap.min
 //= require jquery
 //= require jquery_ujs
 //= require froala_editor.min
 //= require turbolinks
-//= require_tree .
+// require_tree .
+//= require bootstrap.min
 
 $(document).ready(function(){
 	$('.formatting').froalaEditor({
