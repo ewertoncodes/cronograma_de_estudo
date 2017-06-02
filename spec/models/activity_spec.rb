@@ -19,15 +19,22 @@ RSpec.describe Activity do
 
 
 	describe '#list activity' do
-		# When 'priority' is ready
-	# 	it "for priority asc" do
-	# 		activity1 = Activity.create(name: 'oi1', priority: 2)
-	# 		activity2 = Activity.create(name: 'oi2', priority: 3)
+		it "for priority asc" do
+			activity1 = Activity.create(name: 'oi1', priority: 2)
+			activity2 = Activity.create(name: 'oi2', priority: 3)
 
-	# 		activities = Activity.all_for_priority_asc
+			activities = Activity.all_for_priority_asc
 
-	# 		expect(activities.first.priority).to eq '2'
-	# 	end
+			expect(activities.first.priority).to eq 2
+		end
+		it "for priority desc" do
+			activity1 = Activity.create(name: 'oi1', priority: 2)
+			activity2 = Activity.create(name: 'oi2', priority: 3)
+
+			activities = Activity.all_for_priority_desc
+
+			expect(activities.first.priority).to eq 3
+		end
 		it "for desc creation date" do
 			activity1 = Activity.create(name: 'Atividade 1', created_at: '2016-05-03')
 			activity2 = Activity.create(name: 'Atividade 2', created_at: '2016-08-10')
@@ -37,7 +44,6 @@ RSpec.describe Activity do
 			# expect(activities.first.created_at.utc.to_s).to eq '2016-08-10'
 			expect(activities.first.created_at.utc.to_s).to eq '2016-08-10 00:00:00 UTC'
 		end
-
 	end
 	
 end
