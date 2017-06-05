@@ -13,7 +13,16 @@
 <tbody>
 	<% @activities.each_with_index do |activity, i| %>
 		<tr>
-			<td><span class="glyphicon glyphicon-search" aria-hidden="true"></span><span class="glyphicon glyphicon-chevron-up"/></td>
+			<td>
+				<%= link_to('#', remote: true) do %>
+				    <span class="glyphicon glyphicon-chevron-up" style="cursor: pointer;" title="Aumentar prioridade"/>
+				<% end %>
+
+				<%= link_to '#', remote: true do %>
+				    <span class="glyphicon glyphicon-chevron-down" style="cursor: pointer;" title="Diminuir prioridade" />
+				<% end %>
+
+			</td>
 			<td style="width: 5%; text-align: center;"><%= i + 1 %></td>
 			<td style="width: 20%;"><%= link_to activity.name, activity_path(activity.id) %></td>
 			<td style="width: 55%;"><%= raw activity.description %></td>

@@ -20,7 +20,11 @@ class ActivitiesController < ApplicationController
   def index
     @activities = Activity.all_for_created_at_desc
   end
-  
+
+  def increase_priority
+
+  end
+
   private
     def activity_params
       params.require(:activity).permit(:name, :description, :period)

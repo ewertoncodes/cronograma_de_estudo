@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   root 'welcome#index'
   
   resources :activities
+  get 'activities_increase_priority', to: 'activities#increase_priority'
   
 end
