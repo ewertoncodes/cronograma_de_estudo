@@ -22,7 +22,13 @@ class ActivitiesController < ApplicationController
   end
 
   def increase_priority
+    @activity = Activity.find(params[:id])
+    @activity.increase_priority(@activity.priority)
 
+    respond_to do |format|
+      format.js
+      format.json { render json: @activity, status: :created, location: @activity }
+    end
   end
 
   private

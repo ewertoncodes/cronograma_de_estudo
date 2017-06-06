@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   
   resources :activities
-  get 'activities_increase_priority', to: 'activities#increase_priority'
+  patch 'activities_increase_priority/:id', to: 'activities#increase_priority', 
+  as: 'activity_increase_priority'
   
 end

@@ -14,7 +14,7 @@
 	<% @activities.each_with_index do |activity, i| %>
 		<tr>
 			<td>
-				<%= link_to('#', remote: true) do %>
+				<%= link_to(activity_increase_priority_path(activity), remote: true, method: 'patch') do %>
 				    <span class="glyphicon glyphicon-chevron-up" style="cursor: pointer;" title="Aumentar prioridade"/>
 				<% end %>
 

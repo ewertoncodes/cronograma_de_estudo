@@ -15,10 +15,15 @@ class Activity < ApplicationRecord
   	Activity.all.order(created_at: :desc)
   end
 
-  def increase_priority
-    lower_priority = Activity.all_for_priority_asc.
+  def increase_priority(priority)
+    new_priority = priority - 1
+    self.update(priority: new_priority)
+  end
+
+  def set_highest_priority
+    lowest_priority = Activity.all_for_priority_asc.
                       select(:priority).first.priority
-    self.update(priority: --lower_priority)
+    increase_priority(lowest_priority)
   end
 
 end
