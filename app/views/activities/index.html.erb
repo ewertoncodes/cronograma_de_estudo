@@ -12,7 +12,7 @@
 </thead>
 <tbody>
 	<% @activities.each_with_index do |activity, i| %>
-		<tr>
+		<tr id="activity_row_<%= activity.priority %>">
 			<td>
 				<%= link_to(activity_increase_priority_path(activity), remote: true, method: 'patch') do %>
 				    <span class="glyphicon glyphicon-chevron-up" style="cursor: pointer;" title="Aumentar prioridade"/>
@@ -32,9 +32,19 @@
 </tbody>
 <tfoot>
 	<tr>
-		<td colspan="4">
+		<td colspan="5">
 			<%= link_to 'Voltar', root_path, class: "btn btn-primary" %>
 		</td>
 	</tr>
 </tfoot>
 </table>
+
+<script type="text/javascript">
+	$(document).ready(function() { 
+	  $(function(){ 
+	    $.getJSON('/activity_increase_priority/increase_priority.json', function(data1) { 
+	      alert("inside getJson"); alert(data1); console.log(data1); 
+	    }); 
+	});	
+	});
+</script>

@@ -1,0 +1,8 @@
+var up_row = $("#activity_row_<%= @activity.priority %>").prev();
+$("#activity_row_<%= @activity.priority %>").prev().remove();
+$("#activity_row_<%= @activity.priority %>").after(up_row);
+
+$("<%= escape_javascript(render @activity) %>").appendTo("#activity_row_0");
+
+
+$('#activity_row_0').append('<%= j render 'activity', activity: @activity %>')
