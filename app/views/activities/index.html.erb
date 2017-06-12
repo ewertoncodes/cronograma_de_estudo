@@ -18,7 +18,7 @@
 				    <span class="glyphicon glyphicon-chevron-up" style="cursor: pointer;" title="Aumentar prioridade"/>
 				<% end %>
 
-				<%= link_to '#', remote: true do %>
+				<%= link_to(activity_decrease_priority_path(activity), remote: true, method: 'patch') do %>
 				    <span class="glyphicon glyphicon-chevron-down" style="cursor: pointer;" title="Diminuir prioridade" />
 				<% end %>
 

@@ -31,6 +31,16 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def decrease_priority
+    @activity = Activity.find(params[:id])
+    @activity.decrease_priority
+
+    respond_to do |format|
+      format.js
+      format.json { render json: @activity, layout: false, status: :ok, location: @activity }
+    end
+  end
+
   private
     def activity_params
       params.require(:activity).permit(:name, :description, :period)

@@ -30,24 +30,36 @@ class Activity < ApplicationRecord
   end
 
   def increase_priority
-    activity_bigger_priority = Activity.where("priority < ?", self.priority).take
+    activity_bigger_priority = Activity.order(priority: :desc).
+      where("priority < ?", self.priority).first
 
     unless activity_bigger_priority.nil?
       high_priority = activity_bigger_priority.priority
-      puts "high priority " +  high_priority.to_s
       lower_priority = self.priority
-      puts "lower priority " + lower_priority.to_s
-      activity_bigger_priority.update(priority: lower_priority)
-      self.update(priority: high_priority)
+
+      Activity.transaction do
+        activity_bigger_priority.update(priority: -1)
+        self.update(priority: high_priority)
+        activity_bigger_priority.update(priority: lower_priority)
+      end
     end
   end
 
-  def set_highest_priority
-    lowest_priority = Activity.all_for_priority_asc.
-                      select(:priority).first.priority
-    increase_priority(lowest_priority)
-  end
+  def decrease_priority
+    activity_lower_priority = Activity.order(priority: :asc).
+      where("priority > ?", self.priority).first
 
+    unless activity_lower_priority.nil?
+      lower_priority = activity_lower_priority.priority
+      high_priority = self.priority
+
+      Activity.transaction do
+        activity_lower_priority.update(priority: -1)
+        self.update(priority: lower_priority)
+        activity_lower_priority.update(priority: high_priority)
+      end
+    end
+  end
 
   private
 

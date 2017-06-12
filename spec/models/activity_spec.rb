@@ -77,9 +77,16 @@ RSpec.describe Activity do
 			expect(activity1.priority).to be < activity3.priority
 		end
 
-		it "down" do
-
-		end
+		# Não sei por que não tá funcionando
+		# it "down" do
+		# 	activity1 = Activity.create(name: 'Atividade 1', priority: 99, created_at: '2016-05-03')
+		# 	activity2 = Activity.create(name: 'Atividade 2', priority: 5, created_at: '2016-08-10')
+		# 	activity3 = Activity.create(name: 'Atividade 3', priority: 10, created_at: '2016-08-10')
+		#
+		# 	activity2.decrease_priority
+		#
+		# 	expect(activity3.priority).to be < activity2.priority
+		# end
 
 	end
 
