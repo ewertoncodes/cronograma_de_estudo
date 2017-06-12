@@ -72,9 +72,9 @@ RSpec.describe Activity do
 			activity2 = Activity.create(name: 'Atividade 2', priority: 5, created_at: '2016-08-10')
 			activity3 = Activity.create(name: 'Atividade 3', priority: 10, created_at: '2016-08-10')
 
-			activity1.increase_priority(activity1.priority)
+			activity1.increase_priority
 
-			expect(activity2.priority).to be < activity1.priority
+			expect(activity1.priority).to be < activity3.priority
 		end
 
 		it "down" do
