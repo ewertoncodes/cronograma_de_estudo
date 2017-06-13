@@ -4,6 +4,10 @@ class Activity < ApplicationRecord
 
   validates :name, presence: true
 
+  UP_PRIORITY = "up"
+  DOWN_PRIORITY = "down"
+
+
   # priority is an attribute invisible to the user
 
   # TODO: Será que pode copiar o valor do id para priority ?
@@ -29,43 +33,32 @@ class Activity < ApplicationRecord
   	Activity.all.order(created_at: :desc)
   end
 
-  def increase_priority
-    activity_bigger_priority = Activity.order(priority: :desc).
-      where("priority < ?", self.priority).first
-
-    unless activity_bigger_priority.nil?
-      high_priority = activity_bigger_priority.priority
-      lower_priority = self.priority
-
-      Activity.transaction do
-        activity_bigger_priority.update(priority: -1)
-        self.update(priority: high_priority)
-        activity_bigger_priority.update(priority: lower_priority)
+  def change_priority(kind)
+    unless kind != UP_PRIORITY and kind != DOWN_PRIORITY
+      
+      if kind == UP_PRIORITY
+        activity_database = Activity.order(priority: :desc).
+          where("priority < ?", self.priority).first
+      elsif kind == DOWN_PRIORITY
+        activity_database = Activity.order(priority: :asc).
+          where("priority > ?", self.priority).first
       end
-    end
-  end
 
-  def decrease_priority
-    high_priority = self.priority
+      unless activity_database.nil?
+        priority_database = activity_database.priority
+        object_priority = self.priority
 
-    activity_low_priority = Activity.order(priority: :asc).
-      where("priority > ?", high_priority).first
-
-    unless activity_low_priority.nil? && ac
-      low_priority = activity_low_priority.priority
-
-      Activity.transaction do
-        self.update(priority: -1)
-        activity_low_priority.update(priority: -2)
         Activity.transaction do
-          activity_low_priority.update(priority: high_priority)
-          self.update(priority: low_priority)
+          activity_database.update(priority: -1)
+          self.update(priority: priority_database)
+          activity_database.update(priority: object_priority)
         end
       end
 
     end
 
   end
+
 
 
   private

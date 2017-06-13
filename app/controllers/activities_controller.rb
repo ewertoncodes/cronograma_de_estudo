@@ -23,7 +23,7 @@ class ActivitiesController < ApplicationController
 
   def increase_priority
     @activity = Activity.find(params[:id])
-    @activity.increase_priority
+    @activity.change_priority(Activity::UP_PRIORITY)
 
     respond_to do |format|
       format.js
@@ -33,7 +33,9 @@ class ActivitiesController < ApplicationController
 
   def decrease_priority
     @activity = Activity.find(params[:id])
-    @activity.decrease_priority
+    @activity.change_priority(Activity::DOWN_PRIORITY)
+
+    puts "pirioidade " + Activity::DOWN_PRIORITY
 
     respond_to do |format|
       format.js

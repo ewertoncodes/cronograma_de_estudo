@@ -83,7 +83,7 @@ RSpec.describe Activity do
 			activity2 = Activity.create(name: 'Atividade 2')
 			activity3 = Activity.create(name: 'Atividade 3')
 
-			activity1.increase_priority
+			activity1.change_priority(Activity::UP_PRIORITY)
 
 			expect(activity1.priority).to be < activity3.priority
 		end
@@ -94,7 +94,7 @@ RSpec.describe Activity do
 			activity2 = Activity.create(name: 'Atividade 2')
 			activity3 = Activity.create(name: 'Atividade 3')
 
-			activity2.decrease_priority
+			activity2.change_priority(Activity::DOWN_PRIORITY)
 
 			# TODO: Analisar porque o teste unitario falha quando analisamos a Atividade
 			# cuja prioridade foi trocada por esta
