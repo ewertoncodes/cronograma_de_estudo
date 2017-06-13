@@ -46,20 +46,27 @@ class Activity < ApplicationRecord
   end
 
   def decrease_priority
-    activity_lower_priority = Activity.order(priority: :asc).
-      where("priority > ?", self.priority).first
+    high_priority = self.priority
 
-    unless activity_lower_priority.nil?
-      lower_priority = activity_lower_priority.priority
-      high_priority = self.priority
+    activity_low_priority = Activity.order(priority: :asc).
+      where("priority > ?", high_priority).first
+
+    unless activity_low_priority.nil? && ac
+      low_priority = activity_low_priority.priority
 
       Activity.transaction do
-        activity_lower_priority.update(priority: -1)
-        self.update(priority: lower_priority)
-        activity_lower_priority.update(priority: high_priority)
+        self.update(priority: -1)
+        activity_low_priority.update(priority: -2)
+        Activity.transaction do
+          activity_low_priority.update(priority: high_priority)
+          self.update(priority: low_priority)
+        end
       end
+
     end
+
   end
+
 
   private
 
