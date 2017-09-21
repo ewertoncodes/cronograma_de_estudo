@@ -14,3 +14,5 @@
 * **RSpec:** `rspec`
 * **Cucumber:** `rake cucumber`
 
+-----
+\o/ hey ho, let's go! /o/
